@@ -1,0 +1,70 @@
+﻿@model IBAWebApplication.Models.IBA_Trainee
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h1>Details of @Html.DisplayNameFor(model => model.Name)</h1>
+
+<div>
+    <h4>IBA_Trainee</h4>
+    <hr />
+    <dl class="row">
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Name)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Name)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Role)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Role)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.AssignedProducts)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.AssignedProducts)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.TrainingProgram)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.TrainingProgram)
+        </dd>
+    </dl>
+</div>
+<div>
+    <a style="color: black" asp-action="Edit" asp-route-id="@Model?.Id">Edit</a> |
+    <a style="color: black" asp-action="Index">Back to List</a>
+</div>
+<hr />
+<h1>Roadmap Progress</h1>
+<div class="roadmap">
+    <div class="step">
+        <div class="step-content">Step 1: Idea Generation</div>
+        <div class="step-marker"></div>
+    </div>
+    <div class="step">
+        <div class="step-content">Step 2: Planning</div>
+        <div class="step-marker"></div>
+    </div>
+    <div class="step">
+        <div class="step-content">Step 3: Development</div>
+        <div class="step-marker"></div>
+    </div>
+    <div class="step">
+        <div class="step-content">Step 4: Testing</div>
+        <div class="step-marker"></div>
+    </div>
+    <div class="step">
+        <div class="step-content">Step 5: Deployment</div>
+        <div class="step-marker"></div>
+    </div>
+</div>
+<button id="complete-step" type="button" class="btn btn-outline-success">Complete Next Step</button>
+
+<hr />
+<script src="~/js/details.js" asp-append-version="true"></script>
