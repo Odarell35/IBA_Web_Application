@@ -10,6 +10,6 @@ namespace IBAWebApplication.Data
             : base(options)
         {
         }
-        public DbSet<IBAWebApplication.Models.IBA_Trainee> IBA_Trainee { get; set; } = default!;
+        public DbSet<IBAWebApplication.Models.IBA_Trainee> IBA_Trainee { get; set; } = default!;    // table in the database
     }
 }

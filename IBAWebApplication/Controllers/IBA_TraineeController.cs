@@ -12,16 +12,17 @@ using Microsoft.AspNetCore.Authorization;
 namespace IBAWebApplication.Controllers
 {
     public class IBA_TraineeController : Controller
-    {
+    {    //  Declare database connection
         private readonly ApplicationDbContext _context;
-
+         
+        //Inject database to controller
         public IBA_TraineeController(ApplicationDbContext context)
         {
             _context = context;
         }
 
         // GET: IBA_Trainee
-        public async Task<IActionResult> Index()
+        public async Task<IActionResult> DashBoard()
         {
             return View(await _context.IBA_Trainee.ToListAsync());
         }
@@ -35,7 +36,7 @@ namespace IBAWebApplication.Controllers
         // POST: IBA_Trainee/ShowSearchresult
         public async Task<IActionResult> ShowSearchResult(string Name, string Role)
         {
-            return View("Index", await _context.IBA_Trainee.Where(x => x.Name == Name || x.Role == Role).
+            return View("DashBoard", await _context.IBA_Trainee.Where(x => x.Name == Name || x.Role == Role).
                 ToListAsync());
         }
 
@@ -65,11 +66,8 @@ namespace IBAWebApplication.Controllers
             return View();
         }
 
-
-
         // POST: IBA_Trainee/Create
-        // To protect from overposting attacks, enable the specific properties you want to bind to.
-        // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
+        
         [Authorize]
         [HttpPost]
         [ValidateAntiForgeryToken]
@@ -79,7 +77,7 @@ namespace IBAWebApplication.Controllers
             {
                 _context.Add(iBA_Trainee);
                 await _context.SaveChangesAsync();
-                return RedirectToAction(nameof(Index));
+                return RedirectToAction(nameof(DashBoard));
             }
             return View(iBA_Trainee);
         }
@@ -102,8 +100,7 @@ namespace IBAWebApplication.Controllers
         }
 
         // POST: IBA_Trainee/Edit/5
-        // To protect from overposting attacks, enable the specific properties you want to bind to.
-        // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
+        
         [Authorize]
         [HttpPost]
         [ValidateAntiForgeryToken]
@@ -132,7 +129,7 @@ namespace IBAWebApplication.Controllers
                         throw;
                     }
                 }
-                return RedirectToAction(nameof(Index));
+                return RedirectToAction(nameof(DashBoard));
             }
             return View(iBA_Trainee);
         }
@@ -169,7 +166,7 @@ namespace IBAWebApplication.Controllers
             }
 
             await _context.SaveChangesAsync();
-            return RedirectToAction(nameof(Index));
+            return RedirectToAction(nameof(DashBoard));
         }
 
         private bool IBA_TraineeExists(int id)

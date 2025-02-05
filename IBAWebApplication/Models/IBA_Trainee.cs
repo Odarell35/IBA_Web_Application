@@ -15,11 +15,12 @@ namespace IBAWebApplication.Models
         public string AssignedProducts { get; set; }
         public string TrainingProgram { get; set; }
 
+
+
+
         public IBA_Trainee()
         {
-            
-        }
 
+        }
     }
-    
 }
